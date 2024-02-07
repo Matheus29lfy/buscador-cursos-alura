@@ -1,0 +1,41 @@
+{
+    "name": "matheus/buscador-cursos",
+    "description": "Projeto que busca os cursos da Alura",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Matheus Santos"
+        }
+    ],
+    "require": {
+        "guzzlehttp/command": "^1.2",
+        "symfony/dom-crawler": "^6.1",
+        "symfony/css-selector": "^6.2"
+    },
+    "autoload": {
+        "classmap": [
+            "./Teste.php"
+        ],
+        "files": ["./functions.php"],
+        "psr-4": {
+            "Alura\\BuscadorDeCursos\\":"src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "squizlabs/php_codesniffer": "^3.7",
+        "phan/phan": "^5.4"
+    },
+    "scripts":{
+        "test": "phpunit tests\\TestSearcherOfCourses.php",
+        "cs": "phpcs --standard=PSR12 src/",
+        "phan": "phan --allow-polyfill-parser",
+        "check": ["@phan", "@cs","@test"],
+        "post-update-cmd": [
+            "@test"
+        ]
+    },
+    "scripts-descriptions": {
+        "check": "Run setup of code: PHAN, PHPCS AND PHPUNIT"
+    }
+}
